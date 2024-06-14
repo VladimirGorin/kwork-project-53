@@ -1,23 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, Navigate } from "react-router-dom";
+import Main from "./components/Main/Main";
+import "./App.css"
+
+const completedMissions = [
+  {
+    category: "Achievements",
+    tasks: [
+      {
+        id: 1,
+        text: "Subscribe to the group in TG",
+        points: 100000,
+        icon: "/img/telegram-icon.png",
+        link: "vk.com",
+        completed: true
+      },
+    ],
+  }
+];
+
+const missions = [
+  {
+    category: "Daily",
+    tasks: [
+      {
+        id: 2,
+        text: "Subscribe to the group on VK",
+        points: 100000,
+        icon: "/img/vk-icon.png",
+        link: "vk.com",
+        completed: false
+      },
+    ],
+  },
+  {
+    category: "Telegram premium",
+    tasks: [
+      {
+        id: 3,
+        text: "Subscribe to YouTube channel",
+        points: 100000,
+        icon: "/img/youtube-icon.png",
+        link: "https://vk.com",
+        completed: false
+      },
+    ],
+  },
+];
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Routes>
+        <Route path={"/"} element={< Navigate to={"missions"} />} />
+
+        <Route path={"/missions"} element={< Main completedMissions={completedMissions} missions={missions}  />} />
+        <Route path={"/achievements"} element={< Main completedMissions={completedMissions} missions={missions}   />} />
+
+      </Routes>
     </div>
   );
 }

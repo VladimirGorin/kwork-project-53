@@ -1,0 +1,42 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-body{
+  width: 300px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.coin {
+  display: inline-block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.coin img{
+  z-index: 100;
+}
+
+.coin::before {
+  filter: blur(1.5rem);
+  z-index: 200;
+  content: '';
+  position: absolute;
+  top: -25%;
+  left: 5%;
+  width: 250px;
+  height: 250px;
+  background: rgba(255, 255, 29, 0.226);
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.coin img {
+  width: 60%;
+}
