@@ -18,7 +18,11 @@ export default function MissionItem({ task }) {
       </div>
       <div className="mission-left__side">
         <div className="mission-left__side-icon">
-          <img src="/img/right-arrow.png" alt="right-arrow" />
+          {task?.completed ? (
+            <img src="/img/completed.png" alt="completed" />
+          ) : (
+            <img src="/img/right-arrow.png" alt="right-arrow" />
+          )}
         </div>
       </div>
     </Link>
