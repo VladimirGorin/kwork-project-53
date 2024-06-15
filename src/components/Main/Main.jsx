@@ -26,9 +26,9 @@ export default function Main({ api }) {
         const decodedUser = JSON.parse(decodedTMA.user)
 
         const response = await axios.post(`${api}/get-missions`, { id: decodedUser?.id });
-        console.log(response.data)
-        setMissions(response.data)
-        setCompletedMissions(response.data)
+
+        setMissions(response.data.missions)
+        setCompletedMissions(response.data.completedMissions)
       }
 
       getMissions()
