@@ -52,6 +52,7 @@ const missions = [
 function App() {
   useEffect(() => {
     const fetchAppData = async () => {
+      console.log("here")
       console.log(window?.Telegram)
       if (window.Telegram && window.Telegram.WebApp) {
         const app = window.Telegram.WebApp;
