@@ -1,7 +1,7 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import Main from "./components/Main/Main";
 import "./App.css"
-
+import { useTelegram } from "./hooks/useTelegram";
 import { useEffect } from "react";
 
 const completedMissions = [
@@ -50,17 +50,12 @@ const missions = [
 ];
 
 function App() {
+  const { tg, TMA } = useTelegram();
+
   useEffect(() => {
-    const fetchAppData = async () => {
-      console.log(window?.Telegram)
-      if (window.Telegram && window.Telegram.WebApp) {
-        const app = window.Telegram.WebApp;
-        await app.ready();
-        console.log(app)
-      }
-    }
-    fetchAppData();
-  }, []);
+    tg.ready();
+    console.log(TMA)
+  }, [tg, TMA])
 
   return (
     <div className="wrapper">
