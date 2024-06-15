@@ -1,7 +1,7 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import Main from "./components/Main/Main";
 import "./App.css"
-import { useTelegram } from "./hooks/useTelegram";
+
 import { useEffect } from "react";
 
 const completedMissions = [
