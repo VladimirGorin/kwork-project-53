@@ -50,12 +50,11 @@ const missions = [
 ];
 
 function App() {
-  const { tg } = useTelegram();
+  // const { tg } = useTelegram();
 
   useEffect(() => {
-    tg.ready();
-    console.log(tg.initDataUnsafe)
-  }, [tg])
+    console.log(window)
+  }, [])
 
   return (
     <div className="wrapper">
