@@ -15,8 +15,8 @@ export default function Main({ api }) {
   useEffect(() => {
     try {
 
-      async function getMissions(){
 
+      async function getMissions(){
         const response = await axios.post(`${api}/get-missions`, { id });
 
         setMissions(response.data.missions)

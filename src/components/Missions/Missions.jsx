@@ -13,14 +13,22 @@ export default function Missions({
   const { id } = useTelegram();
 
   const handleMissionCompleted = (task) => {
-    async function setCompletedMission() {
-      await axios.post(`${api}/set-user-completed-mission`, {
-        userId: id,
-        missionId: task.id,
-      });
-    }
+    if(!task.completed){
+      async function setCompletedMission() {
+        try {
+          await axios.post(`${api}/set-user-completed-mission`, {
+            userId: id,
+            missionId: task.id,
+          });
 
-    setCompletedMission();
+          window.location.href = task.link
+        } catch (error) {
+          alert(error.message)
+        }
+      }
+
+      setCompletedMission();
+    }
   };
 
   const renderContent = () => {
