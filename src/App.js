@@ -55,7 +55,7 @@ function App() {
   useEffect(() => {
     tg.ready();
     console.log(tg.initDataUnsafe)
-  }, [])
+  }, [tg])
 
   return (
     <div className="wrapper">
