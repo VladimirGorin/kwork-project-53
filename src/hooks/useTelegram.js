@@ -1,4 +1,4 @@
-const tg = window.Telegram;
+const tg = window.Telegram.WebApp;
 
 export function useTelegram() {
 
@@ -9,6 +9,6 @@ export function useTelegram() {
     return {
         onClose,
         tg,
-        TMA: tg?.WebView?.tgWebAppData,
+        TMA: tg?.initData
     }
 }
