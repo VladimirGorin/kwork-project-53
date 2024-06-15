@@ -4,57 +4,16 @@ import "./App.css"
 import { useTelegram } from "./hooks/useTelegram";
 import { useEffect } from "react";
 
-const completedMissions = [
-  {
-    category: "Achievements",
-    tasks: [
-      {
-        id: 1,
-        text: "Subscribe to the group in TG",
-        points: 100000,
-        icon: "/missions/img/telegram-icon.png",
-        link: "vk.com",
-        completed: true
-      },
-    ],
-  }
-];
-
-const missions = [
-  {
-    category: "Daily",
-    tasks: [
-      {
-        id: 2,
-        text: "Subscribe to the group on VK",
-        points: 100000,
-        icon: "/missions/img/vk-icon.png",
-        link: "vk.com",
-        completed: false
-      },
-    ],
-  },
-  {
-    category: "Telegram premium",
-    tasks: [
-      {
-        id: 3,
-        text: "Subscribe to YouTube channel",
-        points: 100000,
-        icon: "/missions/img/youtube-icon.png",
-        link: "https://vk.com",
-        completed: false
-      },
-    ],
-  },
-];
-
 function App() {
   const { tg, TMA } = useTelegram();
 
+  const isDevMode = false
+  const port = 8000
+
+  const api = isDevMode ? `http://localhost:${port}` : "https://api.pushcoin.world"
+
   useEffect(() => {
     tg.ready()
-    console.log(TMA)
   }, [tg, TMA])
 
   return (
@@ -62,8 +21,8 @@ function App() {
       <Routes>
         <Route path={"/"} element={< Navigate to={"missions"} />} />
 
-        <Route path={"/missions"} element={< Main completedMissions={completedMissions} missions={missions} />} />
-        <Route path={"/achievements"} element={< Main completedMissions={completedMissions} missions={missions} />} />
+        <Route path={"/missions"} element={< Main api={api} />} />
+        <Route path={"/achievements"} element={< Main api={api} />} />
 
       </Routes>
     </div>
