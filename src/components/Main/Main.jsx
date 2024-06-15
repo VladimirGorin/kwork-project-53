@@ -4,7 +4,7 @@ import Tabs from "../Tabs/Tabs";
 import Missions from "../Missions/Missions";
 import axios from "axios";
 
-import querystring from "querystring";
+import querystring from "querystring-es3";
 import { useTelegram } from "../../hooks/useTelegram";
 
 export default function Main({ api }) {
