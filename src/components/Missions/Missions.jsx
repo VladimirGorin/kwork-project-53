@@ -1,8 +1,27 @@
 import React from "react";
 import MissionItem from "./MissionItem";
+import axios from "axios";
 import "./Missions.css";
+import { useTelegram } from "../../hooks/useTelegram";
 
-export default function Missions({activeTab, completedMissions, missions}) {
+export default function Missions({
+  api,
+  activeTab,
+  completedMissions,
+  missions,
+}) {
+  const { id } = useTelegram();
+
+  const handleMissionCompleted = (task) => {
+    async function setCompletedMission() {
+      await axios.post(`${api}/set-user-completed-mission`, {
+        userId: id,
+        missionId: task.id,
+      });
+    }
+
+    setCompletedMission();
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -11,7 +30,11 @@ export default function Missions({activeTab, completedMissions, missions}) {
           <div key={mission.category} className="mission-category">
             <h2>{mission.category}</h2>
             {mission.tasks.map((task) => (
-              <MissionItem key={task.id} task={task} />
+              <MissionItem
+                handleMissionCompleted={handleMissionCompleted}
+                key={task.id}
+                task={task}
+              />
             ))}
           </div>
         ));
@@ -20,7 +43,11 @@ export default function Missions({activeTab, completedMissions, missions}) {
           <div key={mission.category} className="mission-category">
             <h2>{mission.category}</h2>
             {mission.tasks.map((task) => (
-              <MissionItem key={task.id} task={task} />
+              <MissionItem
+                handleMissionCompleted={handleMissionCompleted}
+                key={task.id}
+                task={task}
+              />
             ))}
           </div>
         ));

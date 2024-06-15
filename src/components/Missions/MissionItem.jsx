@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-export default function MissionItem({ task }) {
+export default function MissionItem({ task, handleMissionCompleted }) {
   return (
-    <Link to={task?.link || "#"} className="mission-item">
+    <div onClick={() => {handleMissionCompleted(task)}} className="mission-item">
       <div className="mission-right__side">
         <div className="mission-right__side-icon">
           <img src={task.icon} alt={task.icon} />
@@ -25,6 +24,6 @@ export default function MissionItem({ task }) {
           )}
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

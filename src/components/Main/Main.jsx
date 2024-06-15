@@ -4,11 +4,10 @@ import Tabs from "../Tabs/Tabs";
 import Missions from "../Missions/Missions";
 import axios from "axios";
 
-import querystring from "querystring-es3";
 import { useTelegram } from "../../hooks/useTelegram";
 
 export default function Main({ api }) {
-  const { TMA } = useTelegram();
+  const { id } = useTelegram();
   const [activeTab, setActiveTab] = useState("missions");
   const [missions, setMissions] = useState([]);
   const [completedMissions, setCompletedMissions] = useState([]);
@@ -17,15 +16,8 @@ export default function Main({ api }) {
     try {
 
       async function getMissions(){
-        const decodedTMA = querystring.parse(TMA);
 
-        if (!Object.keys(decodedTMA).length) {
-          throw Error("Incorrect TMA");
-        }
-
-        const decodedUser = JSON.parse(decodedTMA.user)
-
-        const response = await axios.post(`${api}/get-missions`, { id: decodedUser?.id });
+        const response = await axios.post(`${api}/get-missions`, { id });
 
         setMissions(response.data.missions)
         setCompletedMissions(response.data.completedMissions)
@@ -36,7 +28,7 @@ export default function Main({ api }) {
     } catch (error) {
       alert(error.message);
     }
-  }, [activeTab, TMA, api]);
+  }, [activeTab, api, id]);
 
   return (
     <>
@@ -44,6 +36,7 @@ export default function Main({ api }) {
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <Missions
         completedMissions={completedMissions}
+        api={api}
         missions={missions}
         activeTab={activeTab}
       />
