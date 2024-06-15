@@ -1,6 +1,8 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import Main from "./components/Main/Main";
 import "./App.css"
+import { useTelegram } from "./hooks/useTelegram";
+import { useEffect } from "react";
 
 const completedMissions = [
   {
@@ -48,14 +50,20 @@ const missions = [
 ];
 
 function App() {
+  const { tg } = useTelegram();
+
+  useEffect(() => {
+    tg.ready();
+    console.log(tg.initDataUnsafe)
+  }, [])
 
   return (
     <div className="wrapper">
       <Routes>
         <Route path={"/"} element={< Navigate to={"missions"} />} />
 
-        <Route path={"/missions"} element={< Main completedMissions={completedMissions} missions={missions}  />} />
-        <Route path={"/achievements"} element={< Main completedMissions={completedMissions} missions={missions}   />} />
+        <Route path={"/missions"} element={< Main completedMissions={completedMissions} missions={missions} />} />
+        <Route path={"/achievements"} element={< Main completedMissions={completedMissions} missions={missions} />} />
 
       </Routes>
     </div>
