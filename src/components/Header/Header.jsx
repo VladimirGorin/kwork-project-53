@@ -7,7 +7,7 @@ export default function Header(props) {
     <div className="header">
       <div className="header-body">
         <div className="coin">
-          <img src="/missions/missions/img/coin.png" alt="Pushcoin" />
+          <img src="img/coin.png" alt="Pushcoin" />
         </div>
         <h1>{props.title}</h1>
       </div>

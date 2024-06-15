@@ -10,7 +10,7 @@ const completedMissions = [
         id: 1,
         text: "Subscribe to the group in TG",
         points: 100000,
-        icon: "/missions/img/telegram-icon.png",
+        icon: "img/telegram-icon.png",
         link: "vk.com",
         completed: true
       },
@@ -26,7 +26,7 @@ const missions = [
         id: 2,
         text: "Subscribe to the group on VK",
         points: 100000,
-        icon: "/missions/img/vk-icon.png",
+        icon: "img/vk-icon.png",
         link: "vk.com",
         completed: false
       },
@@ -39,7 +39,7 @@ const missions = [
         id: 3,
         text: "Subscribe to YouTube channel",
         points: 100000,
-        icon: "/missions/img/youtube-icon.png",
+        icon: "img/youtube-icon.png",
         link: "https://vk.com",
         completed: false
       },

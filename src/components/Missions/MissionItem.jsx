@@ -11,7 +11,7 @@ export default function MissionItem({ task }) {
         <div className="mission-right__side-text">
           <span>{task.text}</span>
           <div className="points">
-            <img src="/missions/img/small-coin.png" alt="small-coin" />
+            <img src="img/small-coin.png" alt="small-coin" />
             <span>+ {task.points.toLocaleString()}</span>
           </div>
         </div>
@@ -19,9 +19,9 @@ export default function MissionItem({ task }) {
       <div className="mission-left__side">
         <div className="mission-left__side-icon">
           {task?.completed ? (
-            <img src="/missions/img/completed.png" alt="completed" />
+            <img src="img/completed.png" alt="completed" />
           ) : (
-            <img src="/missions/img/right-arrow.png" alt="right-arrow" />
+            <img src="img/right-arrow.png" alt="right-arrow" />
           )}
         </div>
       </div>
