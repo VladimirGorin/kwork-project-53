@@ -30,6 +30,7 @@ export default function Main({ api }) {
         const response = axios.post(`${api}/get-missions`, { id: decodedTMA?.chatId });
         console.log((await response).data)
         setMissions((await response).data)
+        setCompletedMissions((await response).data)
       }
 
       getMissions()
