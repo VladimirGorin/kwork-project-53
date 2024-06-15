@@ -50,11 +50,16 @@ const missions = [
 ];
 
 function App() {
-  // const { tg } = useTelegram();
-
   useEffect(() => {
-    console.log(window)
-  }, [])
+    const fetchAppData = async () => {
+      if (window.Telegram && window.Telegram.WebApp) {
+        const app = window.Telegram.WebApp;
+        await app.ready();
+        console.log(app)
+      }
+    }
+    fetchAppData();
+  }, []);
 
   return (
     <div className="wrapper">
