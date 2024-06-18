@@ -13,7 +13,7 @@ function App() {
   const api = isDevMode ? `http://localhost:${port}` : "https://api.pushcoin.world"
 
   useEffect(() => {
-    tg.ready()
+    tg?.ready()
   }, [tg, TMA])
 
   return (
