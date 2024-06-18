@@ -19,6 +19,7 @@ export default function Missions({
           await axios.post(`${api}/set-user-completed-mission`, {
             userId: id,
             missionId: task.id,
+            points: task.points
           });
 
           window.location.href = task.link
